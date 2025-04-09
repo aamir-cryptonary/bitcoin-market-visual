@@ -19,6 +19,9 @@ export default {
 			}
 		},
 		extend: {
+			inset: {
+				'1/5': '20%',
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
