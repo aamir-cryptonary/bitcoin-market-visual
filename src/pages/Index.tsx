@@ -1,12 +1,65 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import Header from '@/components/Header';
+import MarketStatsCard from '@/components/MarketStatsCard';
+import PriceChart from '@/components/PriceChart';
+import MarketSummary from '@/components/MarketSummary';
+import TopMarkets from '@/components/TopMarkets';
+import ConversionTable from '@/components/ConversionTable';
+import TrendingCoins from '@/components/TrendingCoins';
+import AboutBitcoin from '@/components/AboutBitcoin';
+import KeyMetrics from '@/components/KeyMetrics';
+import StrengthWeakness from '@/components/StrengthWeakness';
+import PopularCryptos from '@/components/PopularCryptos';
+import Footer from '@/components/Footer';
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen flex flex-col">
+      <Header />
+      <main className="flex-1">
+        <div className="container py-6 space-y-6">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
+            <div className="lg:col-span-2">
+              <MarketStatsCard />
+            </div>
+            <div className="lg:col-span-3">
+              <PriceChart />
+            </div>
+          </div>
+
+          <MarketSummary />
+          
+          <Tabs defaultValue="markets" className="w-full">
+            <TabsList className="w-full justify-start mb-6">
+              <TabsTrigger value="markets">Market Data</TabsTrigger>
+              <TabsTrigger value="about">About Bitcoin</TabsTrigger>
+              <TabsTrigger value="analysis">Analysis</TabsTrigger>
+            </TabsList>
+            
+            <div className="space-y-6">
+              <TopMarkets />
+              <ConversionTable />
+              <TrendingCoins />
+            </div>
+          </Tabs>
+          
+          <AboutBitcoin />
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div>
+              <KeyMetrics />
+            </div>
+            <div>
+              <PopularCryptos />
+            </div>
+          </div>
+          
+          <StrengthWeakness />
+        </div>
+      </main>
+      
+      <Footer />
     </div>
   );
 };

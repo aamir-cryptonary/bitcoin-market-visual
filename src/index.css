@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -79,6 +80,7 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
+    
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -98,4 +100,33 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.metric-card {
+  @apply bg-card rounded-lg p-4 border border-border shadow-sm;
+}
+
+.metric-card .metric-value {
+  @apply font-semibold text-lg;
+}
+
+.metric-card .metric-title {
+  @apply text-muted-foreground text-sm;
+}
+
+.high-low-progress {
+  @apply h-2 bg-secondary rounded-full overflow-hidden relative my-2;
+}
+
+.high-low-progress .progress-fill {
+  @apply absolute h-full bg-gradient-to-r from-negative via-bitcoin to-positive w-4/5 left-1/5;
 }
