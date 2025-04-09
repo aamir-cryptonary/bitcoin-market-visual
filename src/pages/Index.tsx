@@ -46,7 +46,9 @@ const Index = () => {
             </div>
           </Tabs>
           
-          <AboutBitcoin />
+          <div className="py-4">
+            <AboutBitcoin />
+          </div>
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <div>
