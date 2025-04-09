@@ -1,5 +1,5 @@
 
-import { ArrowUp, ArrowDown, InfoCircle, Star } from 'lucide-react';
+import { ArrowUp, ArrowDown, Info, Star } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Button } from './ui/button';
 import { Badge } from './ui/badge';
@@ -48,7 +48,7 @@ export default function MarketStatsCard() {
           </div>
           <div className="flex items-center gap-1 text-sm text-muted-foreground mt-1">
             <span>Bitcoin Price (USD)</span>
-            <InfoCircle className="h-3.5 w-3.5" />
+            <Info className="h-3.5 w-3.5" />
           </div>
         </div>
 
