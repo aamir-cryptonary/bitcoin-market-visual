@@ -128,5 +128,5 @@
 }
 
 .high-low-progress .progress-fill {
-  @apply absolute h-full bg-gradient-to-r from-red-500 via-bitcoin to-green-500 w-4/5 left-1/5;
+  @apply absolute h-full bg-gradient-to-r from-red-500 via-amber-500 to-green-500 w-4/5 left-1/5;
 }
