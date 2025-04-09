@@ -7,7 +7,9 @@ export default function Header() {
     <header className="border-b sticky top-0 z-10 bg-background">
       <div className="container py-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <Bitcoin className="h-6 w-6 text-bitcoin" />
+          <div className="bg-brandBlue rounded-lg p-1.5">
+            <Bitcoin className="h-5 w-5 text-white" />
+          </div>
           <span className="font-bold text-xl">Cryptonary</span>
         </div>
         

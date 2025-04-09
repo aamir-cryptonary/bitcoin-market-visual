@@ -72,6 +72,12 @@ export default {
 					dark: '#e67e22',
 					hover: '#ffb74d'
 				},
+				brandBlue: {
+					DEFAULT: '#0066FF',
+					light: '#1E88E5',
+					dark: '#0044CC',
+					hover: '#0055DD'
+				},
 				positive: '#10b981',
 				negative: '#ef4444',
 				neutral: '#6b7280',

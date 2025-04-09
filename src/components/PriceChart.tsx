@@ -81,8 +81,8 @@ export default function PriceChart() {
             >
               <defs>
                 <linearGradient id="colorPrice" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#f7931a" stopOpacity={0.8}/>
-                  <stop offset="95%" stopColor="#f7931a" stopOpacity={0}/>
+                  <stop offset="5%" stopColor="#0066FF" stopOpacity={0.8}/>
+                  <stop offset="95%" stopColor="#0066FF" stopOpacity={0}/>
                 </linearGradient>
               </defs>
               <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#eeeeee" />
@@ -106,7 +106,7 @@ export default function PriceChart() {
               <Area 
                 type="monotone" 
                 dataKey="price" 
-                stroke="#f7931a" 
+                stroke="#0066FF" 
                 fillOpacity={1} 
                 fill="url(#colorPrice)" 
               />
@@ -121,7 +121,7 @@ export default function PriceChart() {
               variant={timeFrame === frame ? "default" : "outline"} 
               size="sm"
               onClick={() => setTimeFrame(frame)}
-              className={timeFrame === frame ? "bg-bitcoin hover:bg-bitcoin-dark" : ""}
+              className={timeFrame === frame ? "bg-brandBlue hover:bg-brandBlue-dark" : ""}
             >
               {frame}
             </Button>

@@ -14,8 +14,8 @@ export default function MarketStatsCard() {
       <CardContent className="space-y-6">
         {/* Coin info */}
         <div className="flex items-center gap-3">
-          <div className="h-12 w-12 bg-bitcoin/10 rounded-full flex items-center justify-center">
-            <span className="text-bitcoin text-2xl font-bold">₿</span>
+          <div className="h-12 w-12 bg-brandBlue/10 rounded-full flex items-center justify-center">
+            <span className="text-brandBlue text-2xl font-bold">₿</span>
           </div>
           <div className="flex-1">
             <div className="flex items-center justify-between">
@@ -74,7 +74,7 @@ export default function MarketStatsCard() {
             value="$826.4B" 
             change={2} 
             icon="chart" 
-            color="chartBlue"
+            color="brandBlue"
           />
           <MetricCard 
             title="Fully Diluted" 
