@@ -30,6 +30,8 @@ const Index = () => {
 
           <MarketSummary />
           
+          <StrengthWeakness />
+          
           <Tabs defaultValue="markets" className="w-full">
             <TabsList className="w-full justify-start mb-6">
               <TabsTrigger value="markets">Market Data</TabsTrigger>
@@ -54,8 +56,6 @@ const Index = () => {
               <PopularCryptos />
             </div>
           </div>
-          
-          <StrengthWeakness />
         </div>
       </main>
       
