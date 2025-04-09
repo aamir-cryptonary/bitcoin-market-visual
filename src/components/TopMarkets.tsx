@@ -1,6 +1,6 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
-import { Tabs, TabsList, TabsTrigger } from './ui/tabs';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from './ui/tabs';
 import { Bitcoin } from 'lucide-react';
 import { cn } from '../lib/utils';
 
@@ -18,28 +18,61 @@ const topMarkets = [
 
 export default function TopMarkets() {
   return (
-    <Card>
-      <CardHeader className="pb-2">
-        <CardTitle className="text-lg font-medium flex items-center gap-2">
-          <Bitcoin className="h-5 w-5 text-bitcoin" />
+    <Card className="shadow-md hover:shadow-lg transition-shadow duration-300 border-none overflow-hidden bg-gradient-to-br from-white to-gray-50">
+      <CardHeader className="pb-2 flex flex-row items-center justify-between">
+        <CardTitle className="text-xl font-semibold flex items-center gap-2">
+          <Bitcoin className="h-6 w-6 text-brandBlue" />
           Top BTC Markets
         </CardTitle>
       </CardHeader>
       
       <CardContent>
-        <Tabs defaultValue="all" className="mb-4">
-          <TabsList>
-            <TabsTrigger value="all">All</TabsTrigger>
-            <TabsTrigger value="fiat">Fiat</TabsTrigger>
-            <TabsTrigger value="crypto">Crypto</TabsTrigger>
+        <Tabs defaultValue="all" className="mb-6">
+          <TabsList className="w-fit bg-gray-100 p-1 rounded-full">
+            <TabsTrigger 
+              value="all" 
+              className="rounded-full data-[state=active]:bg-brandBlue data-[state=active]:text-white px-6"
+            >
+              All
+            </TabsTrigger>
+            <TabsTrigger 
+              value="fiat" 
+              className="rounded-full data-[state=active]:bg-brandBlue data-[state=active]:text-white px-6"
+            >
+              Fiat
+            </TabsTrigger>
+            <TabsTrigger 
+              value="crypto" 
+              className="rounded-full data-[state=active]:bg-brandBlue data-[state=active]:text-white px-6"
+            >
+              Crypto
+            </TabsTrigger>
           </TabsList>
+          
+          <TabsContent value="all">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {topMarkets.map((market, index) => (
+                <MarketItem key={index} market={market} />
+              ))}
+            </div>
+          </TabsContent>
+          
+          <TabsContent value="fiat">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {topMarkets.filter(m => !m.pair.includes('/ETH')).map((market, index) => (
+                <MarketItem key={index} market={market} />
+              ))}
+            </div>
+          </TabsContent>
+          
+          <TabsContent value="crypto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {topMarkets.filter(m => m.pair.includes('/ETH') || m.pair.includes('/USDT')).map((market, index) => (
+                <MarketItem key={index} market={market} />
+              ))}
+            </div>
+          </TabsContent>
         </Tabs>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {topMarkets.map((market, index) => (
-            <MarketItem key={index} market={market} />
-          ))}
-        </div>
       </CardContent>
     </Card>
   );
@@ -49,22 +82,22 @@ function MarketItem({ market }: { market: any }) {
   const isPositive = market.change > 0;
   
   return (
-    <div className="border rounded-lg p-4 hover:bg-secondary/50 transition-colors">
-      <div className="flex items-center gap-2 mb-2">
-        <div className="h-8 w-8 bg-secondary rounded-full flex items-center justify-center text-bitcoin font-bold">
+    <div className="bg-white rounded-xl p-5 hover:shadow-md transition-all hover:translate-y-[-2px] border border-gray-100">
+      <div className="flex items-center gap-3 mb-3">
+        <div className="h-10 w-10 rounded-full flex items-center justify-center text-brandBlue bg-brandBlue/10 font-bold">
           {market.symbol}
         </div>
-        <span className="font-medium">{market.pair}</span>
+        <span className="font-semibold text-gray-800">{market.pair}</span>
       </div>
-      <div className="text-xl font-semibold mb-1">{market.value}</div>
-      <div className="flex justify-between text-sm">
-        <span className="text-muted-foreground">Volume: {market.volume}</span>
-        <span className={cn(
-          isPositive ? "text-positive" : "text-negative",
-          "font-medium"
+      <div className="text-2xl font-bold mb-2">{market.value}</div>
+      <div className="flex justify-between items-center">
+        <span className="text-sm text-gray-500">Volume: {market.volume}</span>
+        <div className={cn(
+          "text-sm font-medium px-2 py-1 rounded-md",
+          isPositive ? "bg-positive/10 text-positive" : "bg-negative/10 text-negative"
         )}>
           {isPositive ? '+' : ''}{market.change}%
-        </span>
+        </div>
       </div>
     </div>
   );
