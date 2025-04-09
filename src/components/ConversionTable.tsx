@@ -1,6 +1,6 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
-import { ArrowUpDown, Bitcoin } from 'lucide-react';
+import { Bitcoin, ChevronsUpDown } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { 
   Table,
@@ -26,52 +26,48 @@ const conversionData = [
 
 export default function ConversionTable() {
   return (
-    <Card className="shadow-md hover:shadow-lg transition-shadow duration-300 border-none overflow-hidden bg-gradient-to-br from-white to-gray-50">
-      <CardHeader className="pb-2 flex flex-row items-center justify-between">
-        <CardTitle className="text-xl font-semibold flex items-center gap-2">
-          <Bitcoin className="h-6 w-6 text-brandBlue" />
+    <Card className="overflow-hidden border-none shadow-md bg-gradient-to-br from-white to-blue-50 card-hover-effect">
+      <CardHeader className="pb-3 border-b border-gray-100">
+        <CardTitle className="text-xl font-semibold flex items-center gap-2 text-gray-800">
+          <div className="flex h-7 w-7 items-center justify-center rounded-full bg-brandBlue/10">
+            <Bitcoin className="h-4 w-4 text-brandBlue" />
+          </div>
           Bitcoin Prices Today
         </CardTitle>
       </CardHeader>
       
-      <CardContent>
-        <div className="overflow-x-auto rounded-md">
+      <CardContent className="p-0">
+        <div className="overflow-x-auto">
           <Table>
-            <TableHeader className="bg-gray-50">
-              <TableRow className="border-none hover:bg-transparent">
-                <TableHead className="text-brandBlue font-medium">Currency</TableHead>
-                <TableHead className="text-right text-brandBlue font-medium">BTC Price</TableHead>
-                <TableHead className="text-right text-brandBlue font-medium">24h Change</TableHead>
-                <TableHead className="text-right text-brandBlue font-medium">24h Volume</TableHead>
+            <TableHeader className="bg-transparent border-b border-gray-100">
+              <TableRow className="hover:bg-transparent">
+                <TableHead className="text-sm font-medium text-gray-500 pl-6">Currency</TableHead>
+                <TableHead className="text-sm font-medium text-gray-500 text-right">BTC Price</TableHead>
+                <TableHead className="text-sm font-medium text-gray-500 text-right">24h Change</TableHead>
+                <TableHead className="text-sm font-medium text-gray-500 text-right pr-6">24h Volume</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {conversionData.map((row, index) => (
                 <TableRow 
                   key={index} 
-                  className="border-b hover:bg-blue-50/30 transition-colors cursor-pointer card-hover-effect"
+                  className="table-row-hover border-b border-gray-100 last:border-0"
                 >
-                  <TableCell>
-                    <div className="flex items-center gap-2 pl-1">
-                      <div className="h-8 w-8 rounded-full flex items-center justify-center bg-brandBlue/10 text-brandBlue font-medium">
+                  <TableCell className="pl-6">
+                    <div className="table-currency-cell">
+                      <div className="table-currency-icon">
                         {row.symbol}
                       </div>
-                      <span className="font-medium">{row.currency}</span>
+                      <span className="font-medium text-gray-800">{row.currency}</span>
                     </div>
                   </TableCell>
-                  <TableCell className="text-right font-semibold">{row.price}</TableCell>
-                  <TableCell className={cn(
-                    "text-right font-medium",
-                    row.change > 0 ? "text-positive" : "text-negative"
-                  )}>
-                    <div className={cn(
-                      "inline-flex items-center justify-center px-2 py-1 rounded-full text-xs",
-                      row.change > 0 ? "bg-positive/10 text-positive" : "bg-negative/10 text-negative"
-                    )}>
-                      {row.change > 0 ? '+' : ''}{row.change}%
-                    </div>
+                  <TableCell className="text-right font-medium text-gray-800">{row.price}</TableCell>
+                  <TableCell className="text-right">
+                    <span className={row.change > 0 ? "table-positive-change" : "table-negative-change"}>
+                      {row.change > 0 ? `+${row.change}%` : `${row.change}%`}
+                    </span>
                   </TableCell>
-                  <TableCell className="text-right text-muted-foreground font-medium">{row.volume}</TableCell>
+                  <TableCell className="text-right text-gray-500 pr-6">{row.volume}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
