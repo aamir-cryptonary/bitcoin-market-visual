@@ -133,7 +133,7 @@
 
 /* Modern card effects */
 .card-hover-effect {
-  @apply transition-all duration-300 hover:shadow-lg hover:translate-y-[-2px];
+  @apply transition-all duration-300 hover:shadow-md hover:translate-y-[-2px];
 }
 
 /* Glass effect for cards */
@@ -144,4 +144,25 @@
 /* Modern tabs */
 .modern-tabs [data-state=active] {
   @apply bg-brandBlue text-white;
+}
+
+/* Table styling */
+.table-row-hover {
+  @apply transition-colors hover:bg-blue-50/30;
+}
+
+.table-currency-cell {
+  @apply flex items-center gap-2;
+}
+
+.table-currency-icon {
+  @apply h-8 w-8 rounded-full flex items-center justify-center bg-blue-100 text-brandBlue;
+}
+
+.table-positive-change {
+  @apply bg-positive/10 text-positive px-2 py-1 rounded-full text-xs inline-block;
+}
+
+.table-negative-change {
+  @apply bg-negative/10 text-negative px-2 py-1 rounded-full text-xs inline-block;
 }

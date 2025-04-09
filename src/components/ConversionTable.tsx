@@ -1,7 +1,15 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
-import { ArrowUpDown } from 'lucide-react';
+import { ArrowUpDown, Bitcoin } from 'lucide-react';
 import { cn } from '../lib/utils';
+import { 
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow
+} from './ui/table';
 
 const conversionData = [
   { currency: 'USD', symbol: '$', price: '43,975.72', change: 0.34, volume: '$16.3B' },
@@ -18,48 +26,56 @@ const conversionData = [
 
 export default function ConversionTable() {
   return (
-    <Card>
-      <CardHeader className="pb-2">
-        <CardTitle className="text-lg font-medium flex items-center gap-2">
-          <ArrowUpDown className="h-5 w-5 text-bitcoin" />
+    <Card className="shadow-md hover:shadow-lg transition-shadow duration-300 border-none overflow-hidden bg-gradient-to-br from-white to-gray-50">
+      <CardHeader className="pb-2 flex flex-row items-center justify-between">
+        <CardTitle className="text-xl font-semibold flex items-center gap-2">
+          <Bitcoin className="h-6 w-6 text-brandBlue" />
           Bitcoin Prices Today
         </CardTitle>
       </CardHeader>
       
       <CardContent>
-        <div className="overflow-x-auto">
-          <table className="w-full">
-            <thead>
-              <tr className="border-b">
-                <th className="px-4 py-3 text-left font-medium text-muted-foreground">Currency</th>
-                <th className="px-4 py-3 text-right font-medium text-muted-foreground">BTC Price</th>
-                <th className="px-4 py-3 text-right font-medium text-muted-foreground">24h Change</th>
-                <th className="px-4 py-3 text-right font-medium text-muted-foreground">24h Volume</th>
-              </tr>
-            </thead>
-            <tbody>
+        <div className="overflow-x-auto rounded-md">
+          <Table>
+            <TableHeader className="bg-gray-50">
+              <TableRow className="border-none hover:bg-transparent">
+                <TableHead className="text-brandBlue font-medium">Currency</TableHead>
+                <TableHead className="text-right text-brandBlue font-medium">BTC Price</TableHead>
+                <TableHead className="text-right text-brandBlue font-medium">24h Change</TableHead>
+                <TableHead className="text-right text-brandBlue font-medium">24h Volume</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
               {conversionData.map((row, index) => (
-                <tr key={index} className="border-b hover:bg-secondary/50 transition-colors">
-                  <td className="px-4 py-3 text-left">
-                    <div className="flex items-center gap-2">
-                      <span className="inline-block h-7 w-7 rounded-full bg-secondary flex items-center justify-center font-semibold text-bitcoin">
+                <TableRow 
+                  key={index} 
+                  className="border-b hover:bg-blue-50/30 transition-colors cursor-pointer card-hover-effect"
+                >
+                  <TableCell>
+                    <div className="flex items-center gap-2 pl-1">
+                      <div className="h-8 w-8 rounded-full flex items-center justify-center bg-brandBlue/10 text-brandBlue font-medium">
                         {row.symbol}
-                      </span>
-                      <span>{row.currency}</span>
+                      </div>
+                      <span className="font-medium">{row.currency}</span>
                     </div>
-                  </td>
-                  <td className="px-4 py-3 text-right font-medium">{row.price}</td>
-                  <td className={cn(
-                    "px-4 py-3 text-right font-medium",
+                  </TableCell>
+                  <TableCell className="text-right font-semibold">{row.price}</TableCell>
+                  <TableCell className={cn(
+                    "text-right font-medium",
                     row.change > 0 ? "text-positive" : "text-negative"
                   )}>
-                    {row.change > 0 ? '+' : ''}{row.change}%
-                  </td>
-                  <td className="px-4 py-3 text-right text-muted-foreground">{row.volume}</td>
-                </tr>
+                    <div className={cn(
+                      "inline-flex items-center justify-center px-2 py-1 rounded-full text-xs",
+                      row.change > 0 ? "bg-positive/10 text-positive" : "bg-negative/10 text-negative"
+                    )}>
+                      {row.change > 0 ? '+' : ''}{row.change}%
+                    </div>
+                  </TableCell>
+                  <TableCell className="text-right text-muted-foreground font-medium">{row.volume}</TableCell>
+                </TableRow>
               ))}
-            </tbody>
-          </table>
+            </TableBody>
+          </Table>
         </div>
       </CardContent>
     </Card>
