@@ -21,28 +21,28 @@ const metrics = [
 
 export default function KeyMetrics() {
   return (
-    <Card className="overflow-hidden border-none shadow-lg">
-      <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-slate-800 dark:to-slate-900 p-4 border-b">
-        <CardTitle className="text-xl font-bold flex items-center gap-2">
+    <Card className="overflow-hidden border-none shadow-xl bg-slate-900">
+      <div className="bg-gradient-to-r from-slate-900 to-slate-800 p-4 border-b border-slate-700">
+        <CardTitle className="text-xl font-bold flex items-center gap-2 text-white">
           Key Metrics
-          <Badge variant="outline" className="bg-white/50 dark:bg-slate-800/50 ml-2 backdrop-blur-sm">Updated</Badge>
+          <Badge variant="outline" className="bg-slate-800/80 border-slate-700 ml-2 backdrop-blur-sm text-slate-300">Updated</Badge>
         </CardTitle>
       </div>
       
-      <CardContent className="p-6">
+      <CardContent className="p-6 bg-gradient-to-b from-slate-900 to-slate-950">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {metrics.map((metric, index) => (
             <div key={index} 
-                className="p-4 rounded-xl transition-all duration-300 hover:shadow-md bg-white dark:bg-slate-800 
-                border border-slate-200 dark:border-slate-700 hover:border-blue-200 dark:hover:border-blue-900 
+                className="p-4 rounded-xl transition-all duration-300 hover:shadow-md bg-slate-900 
+                border border-slate-800 hover:border-blue-900
                 hover:translate-y-[-2px] group">
               <div className="flex items-center gap-3 mb-2">
-                <div className="p-2 rounded-full bg-slate-100 dark:bg-slate-700 group-hover:bg-blue-50 dark:group-hover:bg-slate-900">
+                <div className="p-2 rounded-full bg-slate-800 group-hover:bg-slate-700">
                   {metric.icon}
                 </div>
-                <div className="text-sm font-medium text-slate-500 dark:text-slate-400">{metric.label}</div>
+                <div className="text-sm font-medium text-slate-400">{metric.label}</div>
               </div>
-              <div className="font-bold text-lg ml-11 text-slate-900 dark:text-white">{metric.value}</div>
+              <div className="font-bold text-lg ml-11 text-white">{metric.value}</div>
             </div>
           ))}
         </div>
