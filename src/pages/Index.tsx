@@ -11,6 +11,7 @@ import AboutBitcoin from '@/components/AboutBitcoin';
 import KeyMetrics from '@/components/KeyMetrics';
 import StrengthWeakness from '@/components/StrengthWeakness';
 import PopularCryptos from '@/components/PopularCryptos';
+import GoogleTrends from '@/components/GoogleTrends';
 import Footer from '@/components/Footer';
 
 const Index = () => {
@@ -45,6 +46,11 @@ const Index = () => {
               <TrendingCoins />
             </div>
           </Tabs>
+          
+          {/* Google Trends integration */}
+          <div className="py-4">
+            <GoogleTrends />
+          </div>
           
           <div className="py-4">
             <AboutBitcoin />
